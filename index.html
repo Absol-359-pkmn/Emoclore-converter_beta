@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エモクロアチャパレコンバーター（仮）</title>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+
+<h1>
+    エモクロアチャパレコンバーター（仮）新型→旧型
+</h1>
+
+<label for="physics">身体の値は？ </label>
+<input type="number" id="physics" name="physics" min="1" max="6" />
+<br><br>
+
+<label for="dexterity">器用の値は？ </label>
+<input type="number" id="dexterity" name="dexterity" min="1" max="6" />
+<br><br>
+
+<label for="mentality">精神の値は？ </label>
+<input type="number" id="mentality" name="mentality" min="1" max="6" />
+<br><br>
+
+<label for="sense">五感の値は？ </label>
+<input type="number" id="sense" name="sense" min="1" max="6" />
+<br><br>
+
+<label for="intelligence">知力の値は？ </label>
+<input type="number" id="intelligence" name="intelligence" min="1" max="6" />
+<br><br>
+
+<label for="appearance">魅力の値は？ </label>
+<input type="number" id="appearance" name="appearance" min="1" max="6" />
+<br><br>
+
+<label for="social">社会の値は？ </label>
+<input type="number" id="social" name="social" min="1" max="6" />
+<br><br>
+
+<label for="luck">運勢の値は？ </label>
+<input type="number" id="luck" name="luck" min="1" max="6" />
+<br><br>
+
+<textarea id="sourceText" rows="6" cols="40" placeholder="ここにチャパレを貼る...">
+</textarea>
+<br><br>
+
+<button onclick="convertpalet()">コンバート開始</button>
+<br><br>
+
+<label for="newchat">ここに新しいチャパレが出力されるよ！コピペしてね！ : </label>
+<pre id="chat"></pre>
+<br><br>
+
+
+<script>
+
+function convertpalet(){
+    const phy = Number(document.getElementById("physics").value);
+    const dex = Number(document.getElementById("dexterity").value);
+    const men = Number(document.getElementById("mentality").value);
+    const sen = Number(document.getElementById("sense").value);
+    const int = Number(document.getElementById("intelligence").value);
+    const app = Number(document.getElementById("appearance").value);
+    const soc = Number(document.getElementById("social").value);
+    const luc = Number(document.getElementById("luck").value);
+
+    // チャパレを取得
+    let newchat = document.getElementById("sourceText").value;
+
+    //順番に置換　くっそハードコーディングだが知ったことかどうせ誰もこんなん見ないやろ
+    // 身体
+    newchat = newchat.replaceAll("1DA{身体}", "1DM<=" + (phy+1));
+    newchat = newchat.replaceAll("2DA{身体}", "2DM<=" + (phy+2));
+    newchat = newchat.replaceAll("3DA{身体}", "3DM<=" + (phy+3));
+    // 器用
+    newchat = newchat.replaceAll("1DA{器用}", "1DM<=" + (dex+1));
+    newchat = newchat.replaceAll("2DA{器用}", "2DM<=" + (dex+2));
+    newchat = newchat.replaceAll("3DA{器用}", "3DM<=" + (dex+3));
+    // 精神
+    newchat = newchat.replaceAll("1DA{精神}", "1DM<=" + (men+1));
+    newchat = newchat.replaceAll("2DA{精神}", "2DM<=" + (men+2));
+    newchat = newchat.replaceAll("3DA{精神}", "3DM<=" + (men+3));
+    // 五感
+    newchat = newchat.replaceAll("1DA{五感}", "1DM<=" + (sen+1));
+    newchat = newchat.replaceAll("2DA{五感}", "2DM<=" + (sen+2));
+    newchat = newchat.replaceAll("3DA{五感}", "3DM<=" + (sen+3));
+    // 知力
+    newchat = newchat.replaceAll("1DA{知力}", "1DM<=" + (int+1));
+    newchat = newchat.replaceAll("2DA{知力}", "2DM<=" + (int+2));
+    newchat = newchat.replaceAll("3DA{知力}", "3DM<=" + (int+3));
+    // 魅力
+    newchat = newchat.replaceAll("1DA{魅力}", "1DM<=" + (app+1));
+    newchat = newchat.replaceAll("2DA{魅力}", "2DM<=" + (app+2));
+    newchat = newchat.replaceAll("3DA{魅力}", "3DM<=" + (app+3));
+    // 社会
+    newchat = newchat.replaceAll("1DA{社会}", "1DM<=" + (soc+1));
+    newchat = newchat.replaceAll("2DA{社会}", "2DM<=" + (soc+2));
+    newchat = newchat.replaceAll("3DA{社会}", "3DM<=" + (soc+3));
+    // 運勢
+    newchat = newchat.replaceAll("1DA{運勢}", "1DM<=" + (luc+1));
+    newchat = newchat.replaceAll("2DA{運勢}", "2DM<=" + (luc+2));
+    newchat = newchat.replaceAll("3DA{運勢}", "3DM<=" + (luc+3));
+
+    //ベース技能用
+    newchat = newchat.replaceAll("{身体}", phy);
+    newchat = newchat.replaceAll("{器用}", dex);
+    newchat = newchat.replaceAll("{精神}", men);
+    newchat = newchat.replaceAll("{五感}", sen);
+    newchat = newchat.replaceAll("{知力}", int);
+    newchat = newchat.replaceAll("{魅力}", app);
+    newchat = newchat.replaceAll("{社会}", soc);
+    newchat = newchat.replaceAll("{運勢}", luc);
+
+    // 出力
+    document.getElementById("chat").textContent = newchat;
+}
+
+
+
+</script>

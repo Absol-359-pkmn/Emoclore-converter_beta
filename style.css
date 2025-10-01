@@ -1,0 +1,8 @@
+  textarea {
+    width: 100%;
+    max-width: 1800px;
+    height: 200px;  
+    font-size: 16px;
+    padding: 10px;
+    box-sizing: border-box; 
+  }
