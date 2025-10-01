@@ -1,0 +1,2 @@
+# Emoclore-converter_beta
+エモクロアTRPGのAM仕様のチャットパレットをDM仕様に変換するツールです。
