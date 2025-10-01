@@ -13,6 +13,10 @@
     エモクロアチャパレコンバーター（仮）新型→旧型
 </h1>
 
+<p>エモクロアの新型チャパレを旧型にコンバートします。ccfoliaのキャラをそのまま貼っても動きます。
+
+ステータスの値を記入してボタンを押すと結果が出るのでコピペしてください。</p>
+
 <label for="physics">身体の値は？ </label>
 <input type="number" id="physics" name="physics" min="1" max="6" />
 <br><br>
@@ -45,7 +49,7 @@
 <input type="number" id="luck" name="luck" min="1" max="6" />
 <br><br>
 
-<textarea id="sourceText" rows="6" cols="40" placeholder="ここにチャパレを貼る...">
+<textarea id="sourceText" rows="6" cols="40" placeholder="ここにテキストを貼る...">
 </textarea>
 <br><br>
 
@@ -53,9 +57,22 @@
 <br><br>
 
 <label for="newchat">ここに新しいチャパレが出力されるよ！コピペしてね！ : </label>
-<pre id="chat"></pre>
+<textarea id="chat"></textarea>
 <br><br>
 
+<button onclick="copybutton()">クリップボードにコピー</button>
+<br><br>
+
+<footer>
+    サイト作成者: @SenpenBanka_359
+    <br><br>
+    当ツールはエモクロアTRPGの二次創作であり非公式ツールです。エモクロアTRPG公式様、ダイスタス・チーム様とは一切関係がございません。
+    <br><br>
+    このツールは前触れなく削除される可能性がございます。ご了承ください。
+    <br><br>
+    バグ報告・その他質問等ありましたらお気軽にツイッターDMにどうぞ。
+
+</footer>
 
 <script>
 
@@ -120,6 +137,16 @@ function convertpalet(){
     document.getElementById("chat").textContent = newchat;
 }
 
+function copybutton() {
+  var copyText = document.getElementById("chat");
 
+  copyText.select();
+  //スマホ対応用
+  copyText.setSelectionRange(0, 359359);
+
+  navigator.clipboard.writeText(copyText.value);
+
+  alert("コピーしました！");
+}
 
 </script>
